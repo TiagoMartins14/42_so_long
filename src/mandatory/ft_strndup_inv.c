@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_strndup_inv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 18:19:54 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/21 23:41:17 by patatoss         ###   ########.fr       */
+/*   Created: 2023/11/21 23:39:19 by patatoss          #+#    #+#             */
+/*   Updated: 2023/11/21 23:41:49 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-char	*ft_strndup(const char *s, size_t n)
+char	*ft_strndup_inv(const char *s, size_t n)
 {
 	size_t	i;
 	char	*s_dup;
@@ -20,14 +20,13 @@ char	*ft_strndup(const char *s, size_t n)
 	i = 0;
 	while (s[i])
 		i++;
-	s_dup = malloc(i - n + 1);
+	s_dup = malloc(sizeof(char) * n + 1);
 	if (!s_dup)
 		return (NULL);
 	i = 0;
-	while (s[n])
+	while (i < n)
 	{
-		s_dup[i] = s[n];
-		n++;
+		s_dup[i] = s[i];
 		i++;
 	}
 	s_dup[i] = '\0';

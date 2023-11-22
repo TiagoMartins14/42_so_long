@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_perror_exit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 18:19:54 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/21 23:41:17 by patatoss         ###   ########.fr       */
+/*   Created: 2023/11/21 11:02:46 by patatoss          #+#    #+#             */
+/*   Updated: 2023/11/21 11:03:56 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strndup(const char *s, size_t n)
+void	ft_perror_exit(char *str, int error)
 {
-	size_t	i;
-	char	*s_dup;
-
-	i = 0;
-	while (s[i])
-		i++;
-	s_dup = malloc(i - n + 1);
-	if (!s_dup)
-		return (NULL);
-	i = 0;
-	while (s[n])
-	{
-		s_dup[i] = s[n];
-		n++;
-		i++;
-	}
-	s_dup[i] = '\0';
-	return (s_dup);
+	perror(str);
+	exit(error);
 }

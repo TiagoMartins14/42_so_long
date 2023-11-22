@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 18:19:54 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/21 23:41:17 by patatoss         ###   ########.fr       */
+/*   Created: 2023/11/17 20:26:12 by patatoss          #+#    #+#             */
+/*   Updated: 2023/11/19 16:46:10 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-char	*ft_strndup(const char *s, size_t n)
+void	player(t_image *player)
 {
-	size_t	i;
-	char	*s_dup;
-
-	i = 0;
-	while (s[i])
-		i++;
-	s_dup = malloc(i - n + 1);
-	if (!s_dup)
-		return (NULL);
-	i = 0;
-	while (s[n])
-	{
-		s_dup[i] = s[n];
-		n++;
-		i++;
-	}
-	s_dup[i] = '\0';
-	return (s_dup);
+	player->front = "./assets/player_front.xpm";
+	player->back = "./assets/player_back.xpm";
+	player->right = "./assets/player_right.xpm";
+	player->left = "./assets/player_left.xpm";
 }
