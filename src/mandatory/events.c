@@ -6,7 +6,7 @@
 /*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:17:13 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/23 11:32:51 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:41:59 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int	key_press(int keycode, t_game *game)
 	if (keycode == 65307)
 	{
 		mlx_destroy_window(game->mlx, game->win);
-		exit (0);
+		delete_map_array(game->map_matrix);
+		perror_free_str_map_fd(NULL, game->map, NULL, 0);
 	}
 	return (0);
 }

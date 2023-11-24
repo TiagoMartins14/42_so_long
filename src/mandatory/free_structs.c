@@ -6,7 +6,7 @@
 /*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:33:08 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/23 23:11:28 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:37:20 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,30 +35,25 @@ void	delete_list_map(t_map *map)
 		free(temp);
 	}
 }
-void	delete_struct_game(t_game *game)
+
+void	delete_map_array(char **map_array)
 {
-	game->win = NULL;
-	game->mlx = NULL;
-	delete_struct_image(&game->wall);
-	delete_struct_image(&game->floor);
-	delete_struct_image(&game->player);
-	delete_struct_image(&game->collectible);
-	delete_struct_image(&game->exit);
-	delete_list_map(game->map);
-	game->bits_per_pixel = 0;
-	game->line_length = 0;
-	game->endian = 0;
-	game->moves = 0;
-	game->total_of_collectibles = 0;
-	free(game);
+	int	i;
+
+	i = 0;
+	while (map_array[i])
+		free(map_array[i++]);
+	free(map_array);
 }
 
-void	perror_free_str_map(char *str, t_map *map, char *msg, int error)
+void	perror_free_str_map_fd(char *str, t_map *map, char *msg, int map_fd)
 {
 	if (str)
 		free(str);
 	if (map)
 		delete_list_map(map);
-	ft_perror_exit(msg, error);
+	if (map_fd)
+		close(map_fd);
+	ft_perror_exit(msg, 1);
 	return ;
 }

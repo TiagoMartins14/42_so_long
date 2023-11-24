@@ -6,7 +6,7 @@
 /*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:02:46 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/21 11:03:56 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:36:52 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_perror_exit(char *str, int error)
 {
-	perror(str);
+	if (str)
+		perror(str);
 	exit(error);
 }

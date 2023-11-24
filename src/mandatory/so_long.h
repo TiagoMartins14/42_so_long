@@ -6,7 +6,7 @@
 /*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:06:32 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/23 23:40:31 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/24 17:12:15 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ void	set_exit(t_game *game, int x, int y);
 /* free_structs.c */
 void	delete_struct_image(t_image *image);
 void	delete_list_map(t_map *map);
-void	delete_struct_game(t_game *game);
-void	perror_free_str_map(char *str, t_map *map, char *msg, int error);
+void	delete_map_array(char **map_array);
+void	perror_free_str_map_fd(char *str, t_map *map, char *msg, int map_fd);
 
 /* ft_strndup_inv.c */
 char	*ft_strndup_inv(const char *s, size_t n);
