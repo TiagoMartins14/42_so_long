@@ -6,7 +6,7 @@
 /*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:06:32 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/22 14:57:44 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/23 23:40:31 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,31 @@ typedef struct s_game
 
 /* map_checkers.c */
 int		all_items_present(t_game game);
+int		is_all_1(t_game game);
 int		map_fd(char *argv);
-t_map	*map_array(int map_fd);
-void	draw_map(t_game *game);
+int		check_path(char **map, int x, int y, int collectibles);
+
+
+/* map_creators.c */
+int		map_fd(char *argv);
+void	create_map_node(t_map *map, t_map *node, int map_fd);
+t_map	*map_list(int map_fd);
 char	**list_to_array(t_map *map);
 
+/* drawmap.c */
+void	set_map(t_game *game, int x, int y);
+void	draw_map(t_game *game);
+
 /* events.c */
-int	key_press(int keycode, t_game *game);
+void	win_condition(t_game *game);
+void	update_window(t_game *game);
+int		key_press(int keycode, t_game *game);
+
+/* moves.c */
+void	move_right(t_game *game);
+void	move_left(t_game *game);
+void	move_back(t_game *game);
+void	move_front(t_game *game);
 
 /* image_setters.c */
 void	set_floor(t_game *game, int x, int y);
@@ -73,7 +91,8 @@ void	set_exit(t_game *game, int x, int y);
 /* free_structs.c */
 void	delete_struct_image(t_image *image);
 void	delete_list_map(t_map *map);
-void	delete_list_game(t_game *game);
+void	delete_struct_game(t_game *game);
+void	perror_free_str_map(char *str, t_map *map, char *msg, int error);
 
 /* ft_strndup_inv.c */
 char	*ft_strndup_inv(const char *s, size_t n);

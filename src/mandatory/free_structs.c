@@ -6,7 +6,7 @@
 /*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:33:08 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/21 13:06:45 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/23 23:11:28 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	delete_list_map(t_map *map)
 		free(temp);
 	}
 }
-void	delete_list_game(t_game *game)
+void	delete_struct_game(t_game *game)
 {
 	game->win = NULL;
 	game->mlx = NULL;
@@ -51,4 +51,14 @@ void	delete_list_game(t_game *game)
 	game->moves = 0;
 	game->total_of_collectibles = 0;
 	free(game);
+}
+
+void	perror_free_str_map(char *str, t_map *map, char *msg, int error)
+{
+	if (str)
+		free(str);
+	if (map)
+		delete_list_map(map);
+	ft_perror_exit(msg, error);
+	return ;
 }
