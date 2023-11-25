@@ -3,30 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   free_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:33:08 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/24 19:37:20 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/25 11:03:39 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	delete_struct_image(t_image *image)
-{
-	image->image = NULL;
-	free(image->addr);
-	image->size = 0;
-	image->x = 0;
-	image->y = 0;
-	free(image);
-}
-
 void	delete_list_map(t_map *map)
 {
 	t_map	*temp;
 
-	while(map)
+	while (map)
 	{
 		temp = map;
 		free(map->row);

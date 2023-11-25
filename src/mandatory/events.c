@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:17:13 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/24 19:41:59 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/25 12:16:27 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	win_condition(t_game *game)
 		game->total_of_collectibles -= 1;
 		game->map_matrix[game->player.y / 64][game->player.x / 64] = '0';
 	}
-	if (game->map_matrix[game->player.y / 64][game->player.x / 64] == 'E' && game->total_of_collectibles == 0)
+	if (game->map_matrix[game->player.y / 64][game->player.x / 64] == 'E' \
+										&& game->total_of_collectibles == 0)
 	{
 		ft_printf("\nCongrats! You won!\n\n");
 		mlx_destroy_window(game->mlx, game->win);
@@ -29,11 +30,24 @@ void	win_condition(t_game *game)
 
 void	update_window(t_game *game)
 {
-	game->player.image = mlx_xpm_file_to_image(game->mlx, game->player.addr, &game->player.size, &game->player.size);
-	game->floor.image = mlx_xpm_file_to_image(game->mlx, game->floor.addr, &game->floor.size, &game->floor.size);
-	mlx_put_image_to_window(game->mlx, game->win, game->floor.image, game->floor.x, game->floor.y);
-	mlx_put_image_to_window(game->mlx, game->win, game->player.image, game->player.x, game->player.y);
+	game->player.image = mlx_xpm_file_to_image(game->mlx, game->player.addr, \
+									&game->player.size, &game->player.size);
+	game->floor.image = mlx_xpm_file_to_image(game->mlx, game->floor.addr, \
+										&game->floor.size, &game->floor.size);
+	mlx_put_image_to_window(game->mlx, game->win, game->floor.image, \
+												game->floor.x, game->floor.y);
+	mlx_put_image_to_window(game->mlx, game->win, game->player.image, \
+											game->player.x, game->player.y);
 	win_condition(game);
+}
+
+void	game_shutdown(t_game *game)
+{
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->map_matrix)
+		delete_map_array(game->map_matrix);
+	perror_free_str_map_fd(NULL, game->map, NULL, 0);
 }
 
 int	key_press(int keycode, t_game *game)
@@ -46,21 +60,27 @@ int	key_press(int keycode, t_game *game)
 			game->floor.addr = "./assets/exit.xpm";
 		else
 			game->floor.addr = "./assets/floor.xpm";
-		if (keycode ==  100 && game->map_matrix[game->player.y / 64][game->player.x / 64 + 1] != '1')
+		if (keycode == 100 && \
+		game->map_matrix[game->player.y / 64][game->player.x / 64 + 1] != '1')
 			move_right(game);
-		if (keycode ==  97 && game->map_matrix[game->player.y / 64][game->player.x / 64 - 1] != '1')
+		if (keycode == 97 && \
+		game->map_matrix[game->player.y / 64][game->player.x / 64 - 1] != '1')
 			move_left(game);
-		if (keycode ==  119 && game->map_matrix[game->player.y / 64 - 1][game->player.x / 64] != '1')
+		if (keycode == 119 && \
+		game->map_matrix[game->player.y / 64 - 1][game->player.x / 64] != '1')
 			move_back(game);
-		if (keycode ==  115 && game->map_matrix[game->player.y / 64 + 1][game->player.x / 64] != '1')
+		if (keycode == 115 && \
+		game->map_matrix[game->player.y / 64 + 1][game->player.x / 64] != '1')
 			move_front(game);
 		update_window(game);
 	}
 	if (keycode == 65307)
-	{
-		mlx_destroy_window(game->mlx, game->win);
-		delete_map_array(game->map_matrix);
-		perror_free_str_map_fd(NULL, game->map, NULL, 0);
-	}
+		game_shutdown(game);
+	return (0);
+}
+
+int	button_press(t_game *game)
+{
+	game_shutdown(game);
 	return (0);
 }

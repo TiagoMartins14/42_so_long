@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:25:57 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/23 11:26:47 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/25 08:45:44 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	move_right(t_game *game)
 		game->player.addr = "./assets/player_right.xpm";
 	game->player.x += 64;
 }
+
 void	move_left(t_game *game)
 {
 	ft_printf("Moves: %d\n", ++(game->moves));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checkers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:51:07 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/24 14:52:01 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/25 12:17:59 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	all_items_present(t_game game)
 	int	player;
 	int	collectible;
 	int	exit;
-	
+
 	player = 0;
 	collectible = 0;
 	exit = 0;
@@ -43,7 +43,7 @@ int	all_items_present(t_game game)
 
 int	is_all_1(t_game game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < ft_strlen(game.map->row) - 1)
@@ -64,12 +64,12 @@ int	check_path(char **map, int x, int y, int collectibles)
 		collectibles++;
 	map[y][x] = 'F';
 	if (map[y][x + 1] == '0' || map[y][x + 1] == 'C' || map[y][x + 1] == 'E')
-			collectibles = check_path(map, x + 1, y, collectibles);
+		collectibles = check_path(map, x + 1, y, collectibles);
 	if (map[y][x - 1] == '0' || map[y][x - 1] == 'C' || map[y][x - 1] == 'E')
-			collectibles = check_path(map, x - 1, y, collectibles);
+		collectibles = check_path(map, x - 1, y, collectibles);
 	if (map[y + 1][x] == '0' || map[y + 1][x] == 'C' || map[y + 1][x] == 'E')
-			collectibles = check_path(map, x, y + 1, collectibles);
+		collectibles = check_path(map, x, y + 1, collectibles);
 	if (map[y - 1][x] == '0' || map[y - 1][x] == 'C' || map[y - 1][x] == 'E')
-			collectibles = check_path(map, x, y - 1, collectibles);
+		collectibles = check_path(map, x, y - 1, collectibles);
 	return (collectibles);
 }

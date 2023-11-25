@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:05:06 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/23 11:08:06 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/25 08:33:56 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	set_map(t_game *game, int x, int y)
 			else if (game->map->row[x] == 'C')
 			{
 				set_collectible(game, x, y);
-				game->total_of_collectibles++;	
+				game->total_of_collectibles++;
 			}
 			else if (game->map->row[x] == 'E')
 				set_exit(game, x, y);
@@ -41,8 +41,8 @@ void	set_map(t_game *game, int x, int y)
 
 void	draw_map(t_game *game)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 	t_map	*head;
 
 	head = game->map;
