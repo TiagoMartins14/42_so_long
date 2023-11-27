@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:06:32 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/25 12:15:18 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/27 22:14:19 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <fcntl.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
+
+# define MALLOC_ERR "Error\nUnable to malloc\n"
+# define MAP_ERR "Error\nInvalid map\n"
 
 typedef struct s_image
 {
@@ -68,6 +71,7 @@ int		button_press(t_game *game);
 void	delete_list_map(t_map *map);
 void	delete_map_array(char **map_array);
 void	perror_free_str_map_fd(char *str, t_map *map, char *msg, int map_fd);
+void	perror_shutdown(t_game *game);
 
 /* ft_strndup_inv.c */
 char	*ft_strndup_inv(const char *s, size_t n);

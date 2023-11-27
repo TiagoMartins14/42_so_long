@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:33:08 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/25 11:03:39 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/27 22:10:11 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,13 @@ void	perror_free_str_map_fd(char *str, t_map *map, char *msg, int map_fd)
 		close(map_fd);
 	ft_perror_exit(msg, 1);
 	return ;
+}
+
+void	perror_shutdown(t_game *game)
+{
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->map_matrix)
+		delete_map_array(game->map_matrix);
+	perror_free_str_map_fd(NULL, game->map, MAP_ERR, 0);
 }
