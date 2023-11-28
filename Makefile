@@ -6,7 +6,7 @@
 #    By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 07:44:06 by tiaferna          #+#    #+#              #
-#    Updated: 2023/11/23 11:26:34 by patatoss         ###   ########.fr        #
+#    Updated: 2023/11/28 00:06:19 by patatoss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,6 @@ RM = rm -rf
 
 SRCDIR = src/mandatory
 
-SRCBON_DIR = src/bonus
-
 LIBFT_DIR =  src/libft
 
 LMLX_DIR = mlx_linux
@@ -51,11 +49,7 @@ SRCS = 	src/mandatory/so_long.c src/mandatory/events.c src/mandatory/map_checker
 		src/mandatory/image_setters.c src/mandatory/free_structs.c src/mandatory/ft_strndup_inv.c \
 		src/mandatory/map_creators.c src/mandatory/draw_map.c src/mandatory/moves.c 
 
-BONUS_SRCS = 
-
 OBJS = $(SRCS:.c=.o)
-
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 ifeq ($(FOUND_OS), Darwin)
 				CC = gcc
@@ -76,25 +70,18 @@ $(NAME): $(OBJS)
 	clear
 	@echo "$(GREEN)./so_long executable is ready!$(RESET)"
 
-bonus: $(BONUS_OBJS)
-	$(MAKE) -C $(LIBFT_DIR)
-	$(MAKE) -C $(LMLX_DIR)
-	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LFLAGS) -o $(NAME)
-	clear
-	@echo "$(GREEN)./so_long with $(YELLOW)$(FBLINK)bonus $(RESET)$(GREEN)executable is ready!$(RESET)"
-
 %.o: %.c *.h
 	$(CC) $(CFLAGS) -c $< -I . -o $@
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS)
 	clear
 	@echo "$(RED)Object files have been deleted!$(RESET)"
 
 fclean: clean
 	$(MAKE) -s -C $(LIBFT_DIR) fclean
-	$(RM) $(NAME) $(BONUS)
+	$(RM) $(NAME)
 	clear
 	@echo "$(RED)Object files and executable have been deleted!$(RESET)"
 
