@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:19:07 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/25 08:51:28 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:18:13 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	set_floor(t_game *game, int x, int y)
 {
-	game->floor.addr = "./assets/floor.xpm";
+	game->floor.addr = "./textures/floor.xpm";
 	game->floor.size = 64;
 	game->floor.x = x * 64;
 	game->floor.y = y * 64;
@@ -26,7 +26,7 @@ void	set_floor(t_game *game, int x, int y)
 
 void	set_wall(t_game *game, int x, int y)
 {
-	game->wall.addr = "./assets/wall.xpm";
+	game->wall.addr = "./textures/wall.xpm";
 	game->wall.size = 64;
 	game->wall.x = x * 64;
 	game->wall.y = y * 64;
@@ -38,7 +38,7 @@ void	set_wall(t_game *game, int x, int y)
 
 void	set_player(t_game *game, int x, int y)
 {
-	game->player.addr = "./assets/player_front.xpm";
+	game->player.addr = "./textures/player_front.xpm";
 	game->player.size = 64;
 	game->player.x = x * 64;
 	game->player.y = y * 64;
@@ -50,7 +50,7 @@ void	set_player(t_game *game, int x, int y)
 
 void	set_collectible(t_game *game, int x, int y)
 {
-	game->collectible.addr = "./assets/collectible.xpm";
+	game->collectible.addr = "./textures/collectible.xpm";
 	game->collectible.size = 64;
 	game->collectible.x = x * 64;
 	game->collectible.y = y * 64;
@@ -63,7 +63,7 @@ void	set_collectible(t_game *game, int x, int y)
 
 void	set_exit(t_game *game, int x, int y)
 {
-	game->exit.addr = "./assets/exit.xpm";
+	game->exit.addr = "./textures/exit.xpm";
 	game->exit.size = 64;
 	game->exit.x = x * 64;
 	game->exit.y = y * 64;

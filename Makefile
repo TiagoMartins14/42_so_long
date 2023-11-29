@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+         #
+#    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 07:44:06 by tiaferna          #+#    #+#              #
-#    Updated: 2023/11/28 00:06:19 by patatoss         ###   ########.fr        #
+#    Updated: 2023/11/29 09:05:01 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ SRCDIR = src/mandatory
 
 LIBFT_DIR =  src/libft
 
-LMLX_DIR = mlx_linux
+LMLX_DIR = minilibx-linux
 
 SRCS = 	src/mandatory/so_long.c src/mandatory/events.c src/mandatory/map_checkers.c \
 		src/mandatory/image_setters.c src/mandatory/free_structs.c src/mandatory/ft_strndup_inv.c \
@@ -75,16 +75,23 @@ $(NAME): $(OBJS)
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
+	cd minilibx-linux && make clean
 	$(RM) $(OBJS)
 	clear
 	@echo "$(RED)Object files have been deleted!$(RESET)"
 
 fclean: clean
 	$(MAKE) -s -C $(LIBFT_DIR) fclean
+	cd minilibx-linux && make clean
 	$(RM) $(NAME)
 	clear
 	@echo "$(RED)Object files and executable have been deleted!$(RESET)"
 
 re: fclean all
+
+download:
+	@ wget https://cdn.intra.42.fr/document/document/21300/minilibx-linux.tgz
+	@ tar -xzf minilibx-linux.tgz
+	@ rm minilibx-linux.tgz
 
 .PHONY: all clean fclean re

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:17:13 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/27 14:20:04 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:18:18 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ int	key_press(int keycode, t_game *game)
 		game->floor.x = game->player.x;
 		game->floor.y = game->player.y;
 		if (game->map_matrix[game->player.y / 64][game->player.x / 64] == 'E')
-			game->floor.addr = "./assets/exit.xpm";
+			game->floor.addr = "./textures/exit.xpm";
 		else
-			game->floor.addr = "./assets/floor.xpm";
+			game->floor.addr = "./textures/floor.xpm";
 		if (keycode == 100 && \
 		game->map_matrix[game->player.y / 64][game->player.x / 64 + 1] != '1')
 			move_right(game);

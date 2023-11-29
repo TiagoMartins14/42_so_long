@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:06:32 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/27 22:14:19 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/29 09:04:20 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libft/libft.h"
 # include "../libft/ft_printf/ft_printf.h"
 # include "../libft/get_next_line/get_next_line.h"
-# include "../../mlx_linux/mlx.h"
+# include "../../minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
