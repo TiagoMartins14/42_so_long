@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_creators.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:58:25 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/27 22:11:05 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/29 07:59:01 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	create_map_node(t_map *map, t_map *node, int map_fd)
 			break ;
 		if (ft_strlen(temp) != len || temp[0] != '1' || \
 										temp[ft_strlen(temp) - 2] != '1')
-			perror_free_str_map_fd(temp, map, MALLOC_ERR, map_fd);
+			perror_free_str_map_fd(temp, map, MAP_ERR, map_fd);
 		map->height = ++height;
 		node->next = (t_map *)malloc(sizeof(t_map));
 		if (node->next == NULL)
