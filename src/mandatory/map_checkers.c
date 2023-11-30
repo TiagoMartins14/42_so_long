@@ -6,54 +6,58 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:51:07 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/25 12:17:59 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:54:39 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	all_items_present(t_game game)
+int	all_items_present(t_game *game)
 {
-	int	i;
-	int	player;
-	int	collectible;
-	int	exit;
+	int		i;
+	int		player;
+	int		collectible;
+	int		exit;
+	t_map	*node;
 
 	player = 0;
 	collectible = 0;
 	exit = 0;
-	while (game.map)
+	node = game->map;
+	while (node)
 	{
 		i = -1;
-		while (game.map->row[++i])
+		while (node->row[++i])
 		{
-			if (game.map->row[i] == 'P')
+			if (node->row[i] == 'P')
 				player++;
-			else if (game.map->row[i] == 'C')
+			else if (node->row[i] == 'C')
 				collectible++;
-			else if (game.map->row[i] == 'E')
+			else if (node->row[i] == 'E')
 				exit++;
 		}
-		game.map = game.map->next;
+		node = node->next;
 	}
 	if (player != 1 || collectible == 0 || exit != 1)
 		return (0);
 	return (collectible);
 }
 
-int	is_all_1(t_game game)
+int	is_all_1(t_game *game)
 {
-	int	i;
+	int		i;
+	t_map	*node;
 
 	i = 0;
-	while (i < ft_strlen(game.map->row) - 1)
-		if (game.map->row[i++] != '1')
+	node = game->map;
+	while (i < ft_strlen(node->row) - 1)
+		if (node->row[i++] != '1')
 			return (1);
-	while (game.map->next)
-		game.map = game.map->next;
+	while (node->next)
+		node = node->next;
 	i = 0;
-	while (i < ft_strlen(game.map->row) - 1)
-		if (game.map->row[i++] != '1')
+	while (i < ft_strlen(node->row) - 1)
+		if (node->row[i++] != '1')
 			return (1);
 	return (0);
 }

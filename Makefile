@@ -6,7 +6,7 @@
 #    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 07:44:06 by tiaferna          #+#    #+#              #
-#    Updated: 2023/11/29 09:05:01 by tiaferna         ###   ########.fr        #
+#    Updated: 2023/11/30 09:18:51 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ LMLX_DIR = minilibx-linux
 
 SRCS = 	src/mandatory/so_long.c src/mandatory/events.c src/mandatory/map_checkers.c \
 		src/mandatory/image_setters.c src/mandatory/free_structs.c src/mandatory/ft_strndup_inv.c \
-		src/mandatory/map_creators.c src/mandatory/draw_map.c src/mandatory/moves.c 
+		src/mandatory/map_creators.c src/mandatory/draw_map.c src/mandatory/moves.c \
+		src/mandatory/init.c
 
 OBJS = $(SRCS:.c=.o)
 

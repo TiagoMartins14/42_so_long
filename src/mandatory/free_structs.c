@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:33:08 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/29 12:59:02 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:53:46 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,6 @@ void	perror_free_str_map_fd(char *str, t_map *map, char *msg, int map_fd)
 
 void	perror_shutdown(t_game *game)
 {
-	if (game->win)
-		mlx_destroy_window(game->mlx, game->win);
-	if (game->map_matrix)
-		delete_map_array(game->map_matrix);
-	perror_free_str_map_fd(NULL, game->map, MAP_ERR, 0);
-}
-
-void	destroy_image(t_game *game)
-{
-	
+	game_shutdown(game);
+	ft_perror_exit(MAP_ERR, 1);
 }

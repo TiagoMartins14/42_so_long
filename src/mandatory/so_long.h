@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:06:32 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/29 09:04:20 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:51:15 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		button_press(t_game *game);
 void	delete_list_map(t_map *map);
 void	delete_map_array(char **map_array);
 void	perror_free_str_map_fd(char *str, t_map *map, char *msg, int map_fd);
+void	free_image(t_game *game, t_image *image);
 void	perror_shutdown(t_game *game);
 
 /* ft_strndup_inv.c */
@@ -83,9 +84,13 @@ void	set_player(t_game *game, int x, int y);
 void	set_collectible(t_game *game, int x, int y);
 void	set_exit(t_game *game, int x, int y);
 
+/* init.c */
+t_game	*init(void);
+void	image_init(t_image *image);
+
 /* map_checkers.c */
-int		all_items_present(t_game game);
-int		is_all_1(t_game game);
+int		all_items_present(t_game *game);
+int		is_all_1(t_game *game);
 int		check_path(char **map, int x, int y, int collectibles);
 
 /* map_creators.c */

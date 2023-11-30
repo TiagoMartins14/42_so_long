@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:17:13 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/29 12:18:18 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:31:37 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ void	win_condition(t_game *game)
 										&& game->total_of_collectibles == 0)
 	{
 		ft_printf("\nCongrats! You won!\n\n");
-		mlx_destroy_window(game->mlx, game->win);
+		game_shutdown(game);
 		exit (0);
 	}
 }
 
 void	update_window(t_game *game)
 {
+	mlx_destroy_image(game->mlx, game->player.image);
+	if (game->floor.image)
+		mlx_destroy_image(game->mlx, game->floor.image);
 	game->player.image = mlx_xpm_file_to_image(game->mlx, game->player.addr, \
 									&game->player.size, &game->player.size);
 	game->floor.image = mlx_xpm_file_to_image(game->mlx, game->floor.addr, \
@@ -43,11 +46,30 @@ void	update_window(t_game *game)
 
 void	game_shutdown(t_game *game)
 {
-	if (game->win)
-		mlx_destroy_window(game->mlx, game->win);
+	if (game->wall.image)
+		mlx_destroy_image(game->mlx, game->wall.image);
+	if (game->floor.image)
+		mlx_destroy_image(game->mlx, game->floor.image);
+	if (game->player.image)
+		mlx_destroy_image(game->mlx, game->player.image);
+	if (game->collectible.image)
+		mlx_destroy_image(game->mlx, game->collectible.image);
+	if (game->exit.image)
+		mlx_destroy_image(game->mlx, game->exit.image);
+	if (game->map)
+		delete_list_map(game->map);
 	if (game->map_matrix)
 		delete_map_array(game->map_matrix);
-	perror_free_str_map_fd(NULL, game->map, NULL, 0);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
+	if (game)
+		free(game);
+	exit(0);
 }
 
 int	key_press(int keycode, t_game *game)
