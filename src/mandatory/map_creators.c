@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_creators.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:58:25 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/29 07:59:01 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/12/01 20:25:37 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	map_fd(char *argv)
 	return (fd_map);
 }
 
-void	create_map_node(t_map *map, t_map *node, int map_fd)
+int	create_map_node(t_map *map, t_map *node, int map_fd) //REVER
 {
 	int		len;
 	int		height;
 	char	*temp;
-
+	
 	len = ft_strlen(map->row);
 	height = 1;
 	while (len)
@@ -40,7 +40,11 @@ void	create_map_node(t_map *map, t_map *node, int map_fd)
 			break ;
 		if (ft_strlen(temp) != len || temp[0] != '1' || \
 										temp[ft_strlen(temp) - 2] != '1')
-			perror_free_str_map_fd(temp, map, MAP_ERR, map_fd);
+		{
+			close(map_fd);
+			free(temp);
+			return (-1);
+		}
 		map->height = ++height;
 		node->next = (t_map *)malloc(sizeof(t_map));
 		if (node->next == NULL)
@@ -52,9 +56,10 @@ void	create_map_node(t_map *map, t_map *node, int map_fd)
 		node->next = NULL;
 		free(temp);
 	}
+	return (0);
 }
 
-t_map	*map_list(int map_fd)
+t_map	*map_list(t_game *game, int map_fd)
 {
 	t_map	*map;
 	t_map	*node;
@@ -68,7 +73,11 @@ t_map	*map_list(int map_fd)
 		perror_free_str_map_fd(NULL, map, \
 									MALLOC_ERR, map_fd);
 	node = map;
-	create_map_node(map, node, map_fd);
+	if (create_map_node(map, node, map_fd) == -1)
+	{
+		delete_list_map(map);
+		perror_shutdown(game);
+	}
 	close(map_fd);
 	return (map);
 }

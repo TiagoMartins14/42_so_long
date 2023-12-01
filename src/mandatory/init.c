@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:08:56 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/30 12:53:06 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/30 20:07:30 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_game	*init(void)
 	image_init(&game->player);
 	image_init(&game->collectible);
 	image_init(&game->exit);
+	game->map = NULL;
 	return (game);
 }
 

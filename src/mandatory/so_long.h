@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:06:32 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/30 12:51:15 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/30 20:07:32 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ int		check_path(char **map, int x, int y, int collectibles);
 
 /* map_creators.c */
 int		map_fd(char *argv);
-void	create_map_node(t_map *map, t_map *node, int map_fd);
-t_map	*map_list(int map_fd);
+int		create_map_node(t_map *map, t_map *node, int map_fd);
+t_map	*map_list(t_game *game, int map_fd);
 int		check_map_symbols(char **map_array);
 char	**list_to_array(t_map *map);
 

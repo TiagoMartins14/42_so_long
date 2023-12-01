@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:17:13 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/30 12:31:37 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:16:20 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	game_shutdown(t_game *game)
 	}
 	if (game)
 		free(game);
-	exit(0);
 }
 
 int	key_press(int keycode, t_game *game)
@@ -104,5 +103,6 @@ int	key_press(int keycode, t_game *game)
 int	button_press(t_game *game)
 {
 	game_shutdown(game);
+	exit(0);
 	return (0);
 }
