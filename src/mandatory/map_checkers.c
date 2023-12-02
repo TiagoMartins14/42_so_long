@@ -6,11 +6,21 @@
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:51:07 by patatoss          #+#    #+#             */
-/*   Updated: 2023/12/02 15:48:01 by tiago            ###   ########.fr       */
+/*   Updated: 2023/12/02 18:29:45 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	count_symbol(char c, int *player, int *collectible, int *exit)
+{
+	if (c == 'P')
+		(*player)++;
+	else if (c == 'C')
+		(*collectible)++;
+	else if (c == 'E')
+		(*exit)++;
+}
 
 int	all_items_present(t_game *game)
 {
@@ -28,38 +38,37 @@ int	all_items_present(t_game *game)
 	{
 		i = -1;
 		while (node->row[++i])
-		{
-			if (node->row[i] == 'P')
-				player++;
-			else if (node->row[i] == 'C')
-				collectible++;
-			else if (node->row[i] == 'E')
-				exit++;
-		}
+			count_symbol(node->row[i], &player, &collectible, &exit);
 		node = node->next;
 	}
 	if (player != 1 || collectible == 0 || exit != 1)
-		return (0);
+		perror_shutdown(game, NULL, 0);
 	return (collectible);
 }
 
-int	is_all_1(t_game *game)
+void	is_all_1(t_game *game, t_map *map)
 {
 	int		i;
 	t_map	*node;
 
 	i = 0;
-	node = game->map;
+	node = map;
 	while (i < ft_strlen(node->row) - 1)
 		if (node->row[i++] != '1')
-			return (1);
+		{
+			delete_list_map(map);
+			perror_shutdown(game, NULL, 0);
+		}
 	while (node->next)
 		node = node->next;
 	i = 0;
 	while (i < ft_strlen(node->row) - 1)
 		if (node->row[i++] != '1')
-			return (1);
-	return (0);
+		{
+			delete_list_map(map);
+			perror_shutdown(game, NULL, 0);
+		}
+	return ;
 }
 
 int	check_path(char **map, int x, int y, int collectibles)

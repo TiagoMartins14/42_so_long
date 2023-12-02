@@ -6,7 +6,7 @@
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:58:25 by patatoss          #+#    #+#             */
-/*   Updated: 2023/12/02 16:21:35 by tiago            ###   ########.fr       */
+/*   Updated: 2023/12/02 18:51:06 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,30 +35,25 @@ int	create_map_node(t_game *game, t_map *map, t_map *node, int map_fd)
 	int		len;
 	int		height;
 	char	*temp;
-	
+
 	len = ft_strlen(map->row);
 	height = 1;
-	while (len)
+	temp = get_next_line(map_fd);
+	while (len && temp)
 	{
-		temp = get_next_line(map_fd);
-		if (temp == NULL)
-			break ;
-		if (ft_strlen(temp) != len || temp[0] != '1' || \
-										temp[ft_strlen(temp) - 2] != '1')
+		if (ft_strlen(temp) != len || temp[0] != '1' \
+		|| temp[ft_strlen(temp) - 2] != '1')
 		{
 			free(temp);
 			return (-1);
 		}
 		map->height = ++height;
-		node->next = (t_map *)malloc(sizeof(t_map));
-		if (node->next == NULL)
-			perror_shutdown(game, temp, map_fd);
-		node = node->next;
-		node->row = ft_strdup(temp);
-		if (node->row == NULL)
+		if (!(node->next = (t_map *)malloc(sizeof(t_map))) \
+		|| !(node = node->next) || !(node->row = ft_strdup(temp)))
 			perror_shutdown(game, temp, map_fd);
 		node->next = NULL;
 		free(temp);
+		temp = get_next_line(map_fd);
 	}
 	return (0);
 }
@@ -83,6 +78,7 @@ t_map	*map_list(t_game *game, int map_fd)
 		perror_shutdown(game, NULL, map_fd);
 	}
 	close(map_fd);
+	is_all_1(game, map);
 	return (map);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:06:32 by patatoss          #+#    #+#             */
-/*   Updated: 2023/12/02 16:25:57 by tiago            ###   ########.fr       */
+/*   Updated: 2023/12/02 18:51:11 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int		button_press(t_game *game);
 /* free_structs.c */
 void	delete_list_map(t_map *map);
 void	delete_map_array(char **map_array);
-void	free_image(t_game *game, t_image *image);
 void	perror_shutdown(t_game *game, char* str, int map_fd);
 
 /* ft_strndup_inv.c */
@@ -88,8 +87,9 @@ t_game	*init(void);
 void	image_init(t_image *image);
 
 /* map_checkers.c */
+void	count_symbol(char c, int *player, int *collectible, int *exit);
 int		all_items_present(t_game *game);
-int		is_all_1(t_game *game);
+void	is_all_1(t_game *game, t_map *map);
 int		check_path(char **map, int x, int y, int collectibles);
 
 /* map_creators.c */
