@@ -105,7 +105,11 @@ char	*get_next_line(int fd)
 	static char	*str;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		if (str)
+			free(str);
 		return (NULL);
+	}
 	str = get_full_line(fd, str);
 	if (!str)
 		return (NULL);

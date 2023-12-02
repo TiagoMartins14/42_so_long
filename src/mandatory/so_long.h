@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:06:32 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/30 20:07:32 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:25:57 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,8 @@ int		button_press(t_game *game);
 /* free_structs.c */
 void	delete_list_map(t_map *map);
 void	delete_map_array(char **map_array);
-void	perror_free_str_map_fd(char *str, t_map *map, char *msg, int map_fd);
 void	free_image(t_game *game, t_image *image);
-void	perror_shutdown(t_game *game);
+void	perror_shutdown(t_game *game, char* str, int map_fd);
 
 /* ft_strndup_inv.c */
 char	*ft_strndup_inv(const char *s, size_t n);
@@ -94,11 +93,11 @@ int		is_all_1(t_game *game);
 int		check_path(char **map, int x, int y, int collectibles);
 
 /* map_creators.c */
-int		map_fd(char *argv);
-int		create_map_node(t_map *map, t_map *node, int map_fd);
+int		map_fd(t_game *game, char *argv);
+int		create_map_node(t_game *game, t_map *map, t_map *node, int map_fd);
 t_map	*map_list(t_game *game, int map_fd);
 int		check_map_symbols(char **map_array);
-char	**list_to_array(t_map *map);
+char	**list_to_array(t_game *game, t_map *map);
 
 /* moves.c */
 void	move_right(t_game *game);
