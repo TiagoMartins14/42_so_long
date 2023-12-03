@@ -6,7 +6,7 @@
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:06:32 by patatoss          #+#    #+#             */
-/*   Updated: 2023/12/02 18:51:11 by tiago            ###   ########.fr       */
+/*   Updated: 2023/12/03 13:49:55 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		button_press(t_game *game);
 /* free_structs.c */
 void	delete_list_map(t_map *map);
 void	delete_map_array(char **map_array);
-void	perror_shutdown(t_game *game, char* str, int map_fd);
+void	perror_shutdown(t_game *game, char *str, int map_fd);
 
 /* ft_strndup_inv.c */
 char	*ft_strndup_inv(const char *s, size_t n);
@@ -95,6 +95,7 @@ int		check_path(char **map, int x, int y, int collectibles);
 /* map_creators.c */
 int		map_fd(t_game *game, char *argv);
 int		create_map_node(t_game *game, t_map *map, t_map *node, int map_fd);
+t_map	*create_map_node_aid(t_game *game, char *temp, int map_fd);
 t_map	*map_list(t_game *game, int map_fd);
 int		check_map_symbols(char **map_array);
 char	**list_to_array(t_game *game, t_map *map);

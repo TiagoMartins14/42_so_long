@@ -6,7 +6,7 @@
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:33:08 by patatoss          #+#    #+#             */
-/*   Updated: 2023/12/02 16:26:21 by tiago            ###   ########.fr       */
+/*   Updated: 2023/12/03 13:56:32 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ void	perror_shutdown(t_game *game, char *str, int map_fd)
 		free(str);
 	if (map_fd)
 		close(map_fd);
+	write(2, MAP_ERR, ft_strlen(MAP_ERR));
 	game_shutdown(game);
-	ft_perror_exit(MAP_ERR, 1);
 }

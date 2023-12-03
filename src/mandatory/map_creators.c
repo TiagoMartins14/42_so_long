@@ -6,7 +6,7 @@
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:58:25 by patatoss          #+#    #+#             */
-/*   Updated: 2023/12/02 18:51:06 by tiago            ###   ########.fr       */
+/*   Updated: 2023/12/03 13:50:13 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	create_map_node(t_game *game, t_map *map, t_map *node, int map_fd)
 	int		height;
 	char	*temp;
 
-	len = ft_strlen(map->row);
 	height = 1;
+	len = ft_strlen(map->row);
 	temp = get_next_line(map_fd);
 	while (len && temp)
 	{
@@ -48,14 +48,32 @@ int	create_map_node(t_game *game, t_map *map, t_map *node, int map_fd)
 			return (-1);
 		}
 		map->height = ++height;
-		if (!(node->next = (t_map *)malloc(sizeof(t_map))) \
-		|| !(node = node->next) || !(node->row = ft_strdup(temp)))
-			perror_shutdown(game, temp, map_fd);
-		node->next = NULL;
-		free(temp);
+		node->next = create_map_node_aid(game, temp, map_fd);
+		node = node->next;
 		temp = get_next_line(map_fd);
 	}
 	return (0);
+}
+
+t_map	*create_map_node_aid(t_game *game, char *temp, int map_fd)
+{
+	t_map	*new_node;
+
+	new_node = (t_map *)malloc(sizeof(t_map));
+	if (!new_node)
+	{
+		free(temp);
+		perror_shutdown(game, temp, map_fd);
+	}
+	new_node->row = ft_strdup(temp);
+	if (!new_node->row)
+	{
+		free(temp);
+		perror_shutdown(game, temp, map_fd);
+	}
+	new_node->next = NULL;
+	free(temp);
+	return (new_node);
 }
 
 t_map	*map_list(t_game *game, int map_fd)
@@ -80,28 +98,6 @@ t_map	*map_list(t_game *game, int map_fd)
 	close(map_fd);
 	is_all_1(game, map);
 	return (map);
-}
-
-int	check_map_symbols(char **map_array)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (map_array[y])
-	{
-		x = 0;
-		while (map_array[y][x])
-		{
-			if (map_array[y][x] != 'P' && map_array[y][x] != 'C' && \
-			map_array[y][x] != 'E' && map_array[y][x] != '1' && \
-			map_array[y][x] != '0')
-				return (-1);
-			x++;
-		}
-		y++;
-	}
-	return (0);
 }
 
 char	**list_to_array(t_game *game, t_map *map)
