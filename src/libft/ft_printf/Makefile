@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+         #
+#    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/20 20:57:44 by patatoss          #+#    #+#              #
-#    Updated: 2023/05/21 00:29:32 by patatoss         ###   ########.fr        #
+#    Created: 2023/05/20 20:57:44 by tiaferna          #+#    #+#              #
+#    Updated: 2023/12/06 07:45:03 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
