@@ -22,24 +22,24 @@ The project is written in C language and needs the **`gcc` compiler** and some s
 ### Step 1 / Clone the repository:
 
 ```bash
-$ git clone git@github.com:TiagoMartins14/so_long.git
+$> git clone git@github.com:TiagoMartins14/so_long.git
 ```
 
 ### Step 2 / Install Minilibx and its dependencies:
 Minilibx download:
 ```bash
-$ cd so_long/
-$ make download
+$> cd so_long/
+$> make download
 ```
 Minilibx dependencies:
 ```bash
-$ sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
+$> sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
 ```
 
 ### Step 3 / Compile the program:  
 
 ```bash
-$ make
+$> make
 ```
 
 ### Step 4 / Run the program:
@@ -85,7 +85,7 @@ Map example:
 To run the program, you need to select a map from the existing ones or the one that you've created. For that, you need to put its filename. The map needs to be inside the **maps** folder  
   
 ```bash
-$ ./so_long map_1.ber
+$> ./so_long map_1.ber
 ```
 
 To exit the game, just press 'ESC' on your keyboard or click the 'X' in the game window. **HAVE FUN!**
