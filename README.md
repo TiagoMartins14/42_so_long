@@ -1,12 +1,36 @@
-# so_long
-
 <div align="center">
-  <h1>Description</h1>
+  <h1>42_so_long</h1>
 </div>
-This project is a very small 2D game. Its purpose is to make you work with textures, sprites, and some other very basic gameplay elements.
+Project developed during the Common Core @ 42 Porto
 
 <div align="center">
-  <h1>How to play</h1>
+  <h2>So_long</h2>
+</div>
+And thanks for all the fish!
+
+<div align="center">
+  <h3>Summary</h3>
+</div>
+This project is a small 2D game.
+Its purpose is to have you work with textures, sprites,
+and other basic gameplay elements.
+
+<div align="center">
+  <h2>🛠️ Usage</h2>
+</div>
+
+<div align="center">
+  <h3>Requirements</h3>
+</div>
+
+The project is written in C language and needs the **`gcc` compiler** and some standard **C libraries** to run.
+
+<div align="center">
+  <h3>Instructions</h3>
+</div>
+
+<div align="center">
+  <p>**1. Compiling the project**<p>
 </div>
 
 ### Step 1 / Clone the repository:
@@ -25,7 +49,6 @@ Minilibx dependencies:
 ```bash
 $ sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
 ```
-
 
 ### Step 3 / Compile the program:  
 
@@ -80,13 +103,3 @@ $ ./so_long map_1.ber
 ```
 
 To exit the game, just press 'ESC' on your keyboard or click the 'X' in the game window. **HAVE FUN!**
-
-## Disclaimer:
-This project's source code adheres to the standards of 42 School and its norms and rigorous coding practices:
-```
-- We refrain from using 'for,' 'do while,' 'switch,' 'case,' or 'goto' constructs.
-- Each function has no more than 25 lines of code. 
-- There's a maximum of 5 functions per file.
-- Assignments and declarations are kept on separate lines unless the variable is declared as static.
-- We ensure that no single function has more than 5 variables, promoting code simplicity and readability.
-```
