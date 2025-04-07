@@ -22,7 +22,7 @@ The project is written in C language and needs the **`gcc` compiler** and some s
 ### Step 1 / Clone the repository:
 
 ```bash
-$> git clone git@github.com:TiagoMartins14/so_long.git
+$> git clone git@github.com:TiagoMartins14/42_so_long.git
 ```
 
 ### Step 2 / Install Minilibx and its dependencies:
