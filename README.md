@@ -1,21 +1,21 @@
-#42_so_long
+# 42_so_long
 Project developed during the Common Core @ 42 Porto
 
-##So_long
+## So_long
 And thanks for all the fish!
 
-###Summary
+### Summary
 This project is a small 2D game.
 Its purpose is to have you work with textures, sprites,
 and other basic gameplay elements.
 
-##🛠️ Usage
+## 🛠️ Usage
 
-###Requirements
+### Requirements
 
 The project is written in C language and needs the **`gcc` compiler** and some standard **C libraries** to run.
 
-###Instructions
+### Instructions
 
 **1. Compiling the project**<p>
 
