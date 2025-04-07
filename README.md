@@ -1,37 +1,23 @@
-<div align="center">
-  <h1>42_so_long</h1>
-</div>
+#42_so_long
 Project developed during the Common Core @ 42 Porto
 
-<div align="center">
-  <h2>So_long</h2>
-</div>
+##So_long
 And thanks for all the fish!
 
-<div align="center">
-  <h3>Summary</h3>
-</div>
+###Summary
 This project is a small 2D game.
 Its purpose is to have you work with textures, sprites,
 and other basic gameplay elements.
 
-<div align="center">
-  <h2>🛠️ Usage</h2>
-</div>
+##🛠️ Usage
 
-<div align="center">
-  <h3>Requirements</h3>
-</div>
+###Requirements
 
 The project is written in C language and needs the **`gcc` compiler** and some standard **C libraries** to run.
 
-<div align="center">
-  <h3>Instructions</h3>
-</div>
+###Instructions
 
-<div align="center">
-  <p>**1. Compiling the project**<p>
-</div>
+**1. Compiling the project**<p>
 
 ### Step 1 / Clone the repository:
 
